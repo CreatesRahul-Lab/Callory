@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsApp Call Notes</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+  <div class="popup-wrapper">
+
+    <!-- ── Header ──────────────────────────────────────────────────────── -->
+    <header class="header">
+      <div class="header-logo" id="header-logo" aria-label="WhatsApp Call Notes logo">
+        🎙️
+      </div>
+      <div class="header-text">
+        <div class="header-title">WhatsApp Call Notes</div>
+        <div class="header-subtitle">Audio capture · Phase 1</div>
+      </div>
+      <div class="rec-indicator" id="rec-indicator" title="Recording active"></div>
+      <div class="header-badge" id="version-badge">MV3</div>
+    </header>
+
+    <!-- ── Call Status Banner ──────────────────────────────────────────── -->
+    <div class="call-banner no-call" id="call-banner" role="status" aria-live="polite">
+      <div class="call-dot" id="call-dot"></div>
+      <div class="call-status-text" id="call-status-text">
+        Open WhatsApp Web and start a call
+      </div>
+      <div class="call-status-icon" id="call-status-icon">📵</div>
+    </div>
+
+    <!-- ── Recording Card ─────────────────────────────────────────────── -->
+    <div class="recording-card" id="recording-card">
+
+      <!-- Waveform Visualizer -->
+      <div class="waveform" id="waveform" aria-hidden="true">
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+      </div>
+
+      <!-- Status & Timer -->
+      <div class="rec-info">
+        <div class="rec-status" id="rec-status">Ready to Record</div>
+        <div class="rec-timer" id="rec-timer">00:00:00</div>
+        <div class="rec-hint" id="rec-hint">Start a WhatsApp call, then press Record</div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="btn-row">
+        <button class="btn btn-start" id="btn-start" title="Start Recording">
+          <span>⏺</span> Start Recording
+        </button>
+        <button class="btn btn-stop" id="btn-stop" disabled title="Stop Recording">
+          <span>⏹</span> Stop
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ── Info Rows ───────────────────────────────────────────────────── -->
+    <div class="info-section">
+      <div class="info-row">
+        <span class="info-icon">🗂️</span>
+        <span class="info-label">Capture method</span>
+        <span class="info-value">Tab Audio Capture</span>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🎵</span>
+        <span class="info-label">Format</span>
+        <span class="info-value" id="info-format">audio/webm · opus</span>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">💾</span>
+        <span class="info-label">Last saved</span>
+        <span class="info-value" id="info-last-saved">None</span>
+      </div>
+    </div>
+
+    <!-- ── Audio Track Debug (shown when recording) ────────────────────── -->
+    <div class="track-section hidden" id="track-section">
+      <div class="track-title">🔬 Audio Tracks Detected</div>
+      <div class="track-list" id="track-list">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- ── Toast ───────────────────────────────────────────────────────── -->
+    <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+    <!-- ── Footer ─────────────────────────────────────────────────────── -->
+    <footer class="footer">
+      <span class="footer-phase">Phase 1 — Proof of Concept</span>
+      <span class="footer-note">whatsapp-call-notes</span>
+    </footer>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
